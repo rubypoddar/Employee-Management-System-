@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      h1 {
+        text-align: center;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-collapse: collapse; /*Entfernt die Standardabstände zwischen den Tabellenzellen */
+      }
+      thead {
+        background: #003a74;
+        color: #fff;
+      }
+      th,
+      td {
+        text-align: center;
+        padding: 8px;
+
+        border: 1px solid #d6d6d6;
+      }
+
+      @media (max-width: 1440px) {
+        /* Stil für Bildschirme bis 1440px */
+        th,
+        td {
+          font-size: 1.1em;
+        }
+      }
+
+      @media (max-width: 1280px) {
+        /* Stil für Bildschirme bis 1280px */
+        th,
+        td {
+          font-size: 1.1em;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        /* Stil für Bildschirme bis 1024px */
+        th,
+        td {
+          font-size: 1em;
+        }
+      }
+
+      @media (max-width: 768px) {
+        /* Stil für Bildschirme bis 768px */
+        table,
+        thead,
+        tbody,
+        th,
+        td,
+        tr {
+          display: block; /* Stellt alle Tabellenelemente auf block um, wodurch sie wie div-Elemente angezeigt werden */
+        }
+        thead tr {
+          display: none; /* Blendet die Kopfzeile der Tabelle aus */
+        }
+        tr {
+          margin-bottom: 10px;
+        }
+        td {
+          text-align: right;
+          position: relative;
+          padding-left: 50%;
+        }
+        td::before {
+          content: attr(
+            data-label
+          ); /* Fügt den Inhalt des data-label-Attributs vor dem Text der Zelle ein */
+          position: absolute; /* Positioniert das ::before-Element absolut innerhalb der Zelle */
+          left: 0; /* Setzt das ::before-Element an den linken Rand der Zelle */
+          width: 50%; /* Weist dem ::before-Element eine Breite von 50% zu */
+          padding-left: 1.15em; /* Fügt dem ::before-Element einen linken Innenabstand hinzu */
+          font-weight: bold; /* Macht den Text des ::before-Elements fett */
+          text-align: left; /* Richtet den Text des ::before-Elements linksbündig aus */
+          background: red; /* Hintergrundfarbe der Pseudoelemente (ehemalige Überschriften) */
+          width: 100px;
+        }
+      }
+      a button {
+        border: 1px solid;
+        color: #003a74;
+        padding: 10px;
+      }
+      @media (max-width: 480px) {
+        /* Stil für Bildschirme bis 480px */
+        td {
+          font-size: 1.2em;
+        }
+      }
+      @media (max-width: 480px) {
+        /* Stil für Bildschirme bis 480px */
+        th {
+          color: red;
+          font-size: 1.2em;
+        }
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    {% extends "index.html" %} {% block start %}
+    <h1>Employee List</h1>
+    <div class="main">
+      <table>
+        <thead>
+          <tr>
+            <th>SNo.</th>
+            <th>Employee Id</th>
+            <th>Name</th>
+
+            <th>Email</th>
+
+            <th>PassWord</th>
+            <th>Delete</th>
+            <th>update</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in var %}
+          <tr>
+            <th>{{forloop.counter}}</th>
+            <th>{{i.id}}</th>
+            <th>{{i.Name}}</th>
+            <td>{{i.Email}}</td>
+            <td>{{i.PassWord}}</td>
+            <td>
+              <a href="/Employee/del/{{ i.id }}/"><button>Delete</button></a>
+            </td>
+            <td>
+              <a href="/Employee/update/{{ i.id }}/"><button>Update</button></a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endblock start %}
+  </body>
+</html>

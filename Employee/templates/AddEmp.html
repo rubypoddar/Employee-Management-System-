@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="../static/AddEmp.css" />
+
+{% extends "index.html" %} {% block start %}
+<div class="main">
+  <!-- FORMULAIRE DE CONNEXION -->
+  <div class="card">
+    <h2>Signup Form</h2>
+
+    <!-- SE CONNECTER / S'INSCRIRE -->
+    <div class="login_register">
+      <a
+        href="#"
+        class="login"
+        >Login</a
+      >
+      <a
+        href="#"
+        class="register"
+        >Signup</a
+      >
+    </div>
+
+    <!-- FORMULAIRE -->
+    <form class="form" action="/Employee/AddEmp" method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="name" placeholder="Name" class="email">
+      <input type="email" name="email" placeholder="Email Adress" class="email" />
+      <input type="password" name="password" placeholder="password" class="pass" />
+      <input
+        type="password"
+        placeholder="Confirm Password"
+        class="confirm_pass"
+      />
+      <input type="submit" value="Signup" class="login_btn">
+    </form>
+
+
+    <!-- BOUTTON LOGIN -->
+  </div>
+</div>
+{% endblock start %}

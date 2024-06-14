@@ -1,0 +1,32 @@
+
+{% extends "index.html" %} {% block start %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'update.css' %}">
+<div class="main">
+  <!-- FORMULAIRE DE CONNEXION -->
+  <div class="card">
+    <h2>Update Form</h2>
+
+    <!-- SE CONNECTER / S'INSCRIRE -->
+   
+
+    <!-- FORMULAIRE -->
+    <form class="form" action="/Employee/Update_Done/{{ emp.id }}/" method="POST">
+        {% csrf_token %}
+
+        <input type="text" name="name" placeholder="Name" class="email" value="{{emp.Name}}">
+      <input type="email" name="email" placeholder="Email Adress" class="email" value="{{emp.Email}} "/>
+      <input type="password" name="password" placeholder="password" class="pass" value="{{emp.PassWord}}"/>
+      <input
+        type="password"
+        placeholder="Confirm Password"
+        class="confirm_pass"
+      />
+      <input type="submit" value="Signup" class="login_btn">
+    </form>
+
+
+    <!-- BOUTTON LOGIN -->
+  </div>
+</div>
+{% endblock start %}
